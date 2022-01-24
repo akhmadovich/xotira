@@ -1,6 +1,6 @@
 <template>
     <div class="drawer-background" :class="{show : active}" @click="emit('close-product-drawer')"></div>
-    <div v-if="product" class="alert alert-info position-relative padding">
+    <div v-if="product" class="drawer">
         <div :show="{show:active}">
             <button class="btn-close position-absolute top-0 end-0" @click="emit('close-product-drawer')"></button>
         </div>
@@ -36,3 +36,41 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .drawer-background{
+        background: rgba(124, 124, 124, 0.55);
+        width: 100%;
+        height: 100vh;
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        transition: display .5s;
+
+        &.show{
+            display: block;
+        }
+    }
+    .drawer{
+        width: 95vw;
+        height: 100vw;
+        background: rgba($color: #fff, $alpha: 0.8);
+        position: fixed;
+        top: 0;
+        left: 0vw;
+        transition: left 0.5s;
+        z-index: 101;
+        overflow-y: scroll;
+
+        &.show{
+            left: 0;
+        }
+    }
+    @media screen and (min-width: 500px) {
+        .drawer{
+            width: 450px;
+        }
+    }
+</style>    
