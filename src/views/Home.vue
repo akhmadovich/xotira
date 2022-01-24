@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <product-description-drawer
-        :product="product"
+        :product="product1"
         :active="active.product_drawer"
       ></product-description-drawer>
       <div class="product-cards-container">
@@ -23,15 +23,15 @@ import { ref } from '@vue/reactivity'
 export default {
   name: 'Home',
   setup(){
-    const product = ref(null)
+    const product1 = ref(null)
     const viewProduct = val => {
-      product.value = val
-      console.log(product.value);
+      product1.value = val
+      console.log(product1.value);
     }
     
     return{
       items,
-      product,
+      product1,
       viewProduct,
       active:{
         product_drawer: false
