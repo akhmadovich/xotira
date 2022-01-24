@@ -1,32 +1,28 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            <h2>{{product.category}}</h2>
-        </div>
-        <div class="card-body">
-            <h3>Company name: {{product.name}}</h3>
-            <h4>Price : {{currency(product.price)}}</h4>
-            <p>Description: {{description}}</p>
-            <button class="btn btn-outline-primary" @click="$emit('view-product', product)">View Product</button>
-        </div>
-    </div>
+  <div class="card col-6 m-1">
+      <div class="card-header">
+          <h3 class="card-title">{{product.name}}</h3>
+      </div>
+      <div class="card-body text-start padding">
+          <div><strong>Price:</strong> ${{product.price.toFixed(2)}}</div>
+          <div class="card-text"><strong>Description:</strong> {{product.description}}</div>
+          <div><strong>Category:</strong> {{product.category}}</div>
+          <button class="btn btn-outline-dark" @click="$emit('view-product', product)">View product</button>
+      </div>
+  </div>
 </template>
 
 <script>
-import { computed } from '@vue/runtime-core'
-import {currency} from '../../utils/currency'
-
 export default {
     props:['product'],
-    emits:['view-product'],
-    setup(props){
-        const description = computed(() => {
-            return props.product.description.substring(0, 150)
-        })
-        return{
-            currency,
-            description
-        }
-    }
+    emits:['view-product']
 }
 </script>
+
+<style lang="scss">
+    .padding{
+        div{
+            padding: 5px;
+        }
+    }
+</style>

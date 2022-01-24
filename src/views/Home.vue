@@ -1,54 +1,41 @@
 <template>
   <div class="home">
-      <product-description-drawer
-        :product="product"
-        :active="active.product_drawer"
-      ></product-description-drawer>
-      <div class="product-cards-container">
-        <ProductSummaryCard 
+      <div class="row justify-content-center">
+        <product-summary-card
           v-for="product in items"
           :key="product.id"
           :product="product"
-          @view-product="viewProduct($event)"/>
+          @view-product="viewProduct($event)"
+        ></product-summary-card>
       </div>
   </div>
 </template>
 
 <script>
-import items from '../data/items'
-import ProductSummaryCard from '../components/product/ProductSummaryCard.vue'
-import ProductDescriptionDrawer from '../components/product/ProductDescriptionDrawer.vue'
 import { ref } from '@vue/reactivity'
+import ProductSummaryCard from '../components/product/ProductSummaryCard.vue'
+import items from '../data/items'
 
 export default {
-  name: 'Home',
+  name:'Home',
+  components: { ProductSummaryCard },
   setup(){
-    const product = ref(null)
-    const viewProduct = val => {
-      product.value = val
-      console.log(product.value);
+    const product1 = ref(null)
+    
+    const viewProduct = val =>{
+      product1.value = val
+      console.log(product1.value);
     }
     
     return{
       items,
-      product,
       viewProduct,
-      active:{
-        product_drawer: false
-      }
+      product1
     }
-  },
-  components: {
-    ProductSummaryCard,
-    ProductDescriptionDrawer
   }
 }
 </script>
 
 <style lang="scss">
-  .product-cards-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  
 </style>

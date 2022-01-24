@@ -20,6 +20,7 @@
         <button class="btn btn-outline-danger me-1">Remove</button>
         <button class="btn btn-outline-primary">Add</button>
     </div>
+  
 </template>
 
 <script>
