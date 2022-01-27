@@ -3,6 +3,7 @@
       <product-description-drawer
         :product="product1"
         :active="active.product_drawer"
+        @close-product-drawer="closeProductDrawer()"
       ></product-description-drawer>
       <div class="product-cards-container">
         <ProductSummaryCard 
@@ -23,19 +24,25 @@ import { ref } from '@vue/reactivity'
 export default {
   name: 'Home',
   setup(){
+    const active = {
+      product_drawer: false
+    }
     const product1 = ref(null)
     const viewProduct = val => {
       product1.value = val
-      console.log(product1.value);
+      active.product_drawer = true
+    }
+
+    const closeProductDrawer = () => {
+      active.product_drawer = false
     }
     
     return{
       items,
       product1,
       viewProduct,
-      active:{
-        product_drawer: false
-      }
+      active,
+      closeProductDrawer
     }
   },
   components: {

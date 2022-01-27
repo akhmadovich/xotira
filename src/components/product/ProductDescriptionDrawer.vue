@@ -1,7 +1,7 @@
 <template>
     <div class="drawer-background" :class="{show : active}" @click="emit('close-product-drawer')"></div>
     <div v-if="product" class="drawer">
-        <div :show="{show:active}">
+        <div :class="{show:active}">
             <button class="btn-close position-absolute top-0 end-0" @click="emit('close-product-drawer')"></button>
         </div>
         <h3 class="text-center">{{product.name}}</h3>
@@ -56,7 +56,7 @@ export default {
     .drawer{
         width: 95vw;
         height: 100vw;
-        background: rgba($color: #fff, $alpha: 0.8);
+        background: rgba($color: #fff, $alpha: 0.95);
         position: fixed;
         top: 0;
         left: 0vw;
@@ -65,7 +65,7 @@ export default {
         overflow-y: scroll;
 
         &.show{
-            left: 0;
+            left: -105vw;
         }
     }
     @media screen and (min-width: 500px) {
